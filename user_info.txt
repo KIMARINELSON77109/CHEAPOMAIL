@@ -1,0 +1,7 @@
+username:                        Password:
+
+admin                            password123
+kimari@cheapomail.com            password0
+yohan@cheapomail.com             password1
+kadaine@cheapomail.com           password2
+ 
