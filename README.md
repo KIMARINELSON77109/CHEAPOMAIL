@@ -39,7 +39,7 @@ button to make the message go to all recipients (please use commas "," to separa
 recipients). Also ensure the input fields are validated and that user inputs are
 escaped and sanitized.
 
-Receive and read a message
+# RECIEVE AND READ A MESSAGE
 Each recipient of the message should see only messages sent to them on their home
 screen. Messages that have not been read are to be bold. When a message is clicked
 it will open and show the details of the message. These details should include the
@@ -47,7 +47,7 @@ first and last name of the sender, the subject of the message, the body of the
 message and the date it was sent. The message opened is immediately "flagged" as
 being read and should no longer be bold on the home screen.
 
-No Page Refreshes
+# NO PAGE REFRESH
 All new pages should load without browser refresh, in other words you will need to
 implement an AJAX based approach to loading new content into the browser. 
 
