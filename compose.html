@@ -1,0 +1,45 @@
+    <form id= "com-form" action="#">
+    	<input type="text" name="recipient" id="recipient" placeholder="recipient"/>
+        <br />
+        <br />
+        <input type="text" name="subject" id="subject" placeholder="Subject"/>
+        <br />
+        <br />
+        <textarea name="msgBody" id="body" rows="10" cols="15" placeholder="Write your message here"></textarea>
+        <br />
+        <button type="submit" id="submit-msg">Send Message</button>
+    </form>
+<p id="status_upate"></p>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    /* global $ */
+    $(document).ready(function(){
+
+//##########################Send Message########################################
+        $("#com-form").on('submit', function(e){
+            e.preventDefault();
+            console.log("text");
+            var recp = $("#recipient").val();
+            var subj = $("#subject").val();
+            var body = $("#body").val();
+            
+            recp = recp.replace(" ",",");
+            
+            var data = "recipients="+recp+"&subject="+subj+"&body="+body;
+            
+//########################send messages ajax request############################
+            $.ajax({
+                url: 'main.php',
+                type: 'POST',
+                data: data,
+            }).done(function (res){
+                console.log(res);
+                $("#status_upate").html(res);
+                $("#recipient").val('');$("#subject").val('');
+                $("#body").val('');
+            });
+        });
+    });
+</script>
+    

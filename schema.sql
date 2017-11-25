@@ -1,0 +1,38 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+DROP DATABASE IF EXISTS c9;
+CREATE DATABASE c9;
+USE c9;
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE users
+(
+  id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  firstname VARCHAR(250)  NOT NULL,
+  lastname VARCHAR(250) NOT NULL,
+  username VARCHAR(380) NOT NULL,
+  password_digest VARCHAR(200)
+);
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE messages
+(
+  id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  recipient_ids INT UNSIGNED NOT NULL,
+  user_id INT UNSIGNED NOT NULL,
+  subject VARCHAR(100) NOT NULL,
+  body text,
+  date_sent TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS `messages_read`;
+CREATE TABLE messages_read
+(
+ id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+ message_id INT UNSIGNED NOT NULL,
+ reader_id INT UNSIGNED NOT NULL,
+ date_read TIMESTAMP NOT NULL
+);
+
+INSERT INTO users (id, firstname, lastname, username, password_digest) VALUES
+  (1, "Kimari", "Nelson", "admin", "482c811da5d5b4bc6d497ffa98491e38");

@@ -1,0 +1,215 @@
+ <form name ="reg_form" id= "reg__form" method="post">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="text-center">Registration</h1>
+                </div>
+                 <div class="modal-body">
+                     <div class="form-group">
+                         <input type="text" name= "fname" id= "firstname" class="form-control input-lg" placeholder="Firstname"/>
+                         <span class="error" id="fname_error"></span>
+                     </div>
+                     
+                     <div class="form-group">
+                         <input type="text" name= "lname" id= "lastname" class="form-control input-lg" placeholder="Lastname"/>
+                         <span class="error" id="lname_error"></span>
+                     </div>
+                     
+                     <div class="form-group">
+                         <input type="text" name= "uname" id= "username" class="form-control input-lg" placeholder="Username"/>
+                         <span  class="error" id="uname_error"></span>
+                     </div>
+        
+                     <div class="form-group">
+                         <input type="password" name= "pass" id= "password" class="form-control input-lg" placeholder="Password"/>
+                         <span class="error" id="pass_error"></span>
+                     </div>
+        
+                    <div class="form-group">
+                         <input type="password" name= "confirm_password" id= "Confirm_password" class="form-control input-lg" placeholder="Confirm password"/>
+                         <span class="error" id="cpass_error"></span>
+                     </div>
+                     
+                     <div class="form-group">
+                         <input type="submit" class="btn btn-block btn-lg btn-primary" id = "register" value="register"/>
+                     </div>
+                     
+                     <div class="form-group">
+                        <!-- error reporting goes here -->
+                        <div class="message" id="log-msg"></div>
+		            </div>
+                 </div>
+            </div>
+        </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script type="text/javascript">
+/* global $ */
+$(document).ready(function()
+{
+    $("#fname_error").hide();
+    $("#lname_error").hide();
+    $("#uname_error").hide();
+    $("#pass_error").hide();
+    $("#cpass_error").hide();
+    
+    var error_fname = false;
+    var error_lname = false;
+    var error_uname = false;
+    var error_pass = false;
+    var error_cpass = false;
+    
+    $("#firstname").focusout(function(){
+        check_fname();
+    });
+    
+    $("#lastname").focusout(function(){
+        check_lname();
+    });
+    
+    $("#username").focusout(function(){
+        check_uname();
+    });
+    
+    $("#password").focusout(function(){
+        check_pass();
+    });
+    
+    $("#Confirm_password").focusout(function(){
+        check_cpass();
+    });
+    
+    function check_fname()
+    {
+        var name_length = $("#firstname").val().length;
+        if(name_length < 3 || name_length > 20)
+        {
+            $("#fname_error").html("Should be between 3 and 20 characters");
+            $("#fname_error").show();
+            error_fname = true;
+        }
+        else
+        {
+            $("#fname_error").hide();
+        }
+    }
+    
+    function check_lname()
+    {
+        var lname_length = $("#lastname").val().length;
+        if(lname_length < 3 || lname_length > 20)
+        {
+            $("#lname_error").html("Should be between 3 and 20 characters");
+            $("#lname_error").show();
+            error_lname = true;
+        }
+        else
+        {
+            $("#lname_error").hide();
+        }
+    }
+    
+    function check_pass()
+    {
+        var pass_length = $("#password").val().length;
+        if(pass_length < 8)
+        {
+            $("#pass_error").html("At least 8 characters");
+            $("#pass_error").show();
+            error_pass = true;
+        }
+        else
+        {
+            $("#pass_error").hide();
+        }
+    }
+    
+    function check_cpass()
+    {
+        var pass_length = $("#password").val().length;
+        var cpass_length = $("#Confirm_password").val().length;
+        if(pass_length != cpass_length)
+        {
+            $("#cpass_error").html("Passwords don't match");
+            $("#cpass_error").show();
+            error_cpass = true;
+        }
+        else
+        {
+            $("#cpass_error").hide();
+        }
+    }
+    
+    function check_uname()
+    {
+        var uname = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i);
+        if(uname.test($("#username").val()))
+        {
+            $("#uname_error").hide()
+        }
+        else
+        {
+            $("#uname_error").html("invalid email address");
+            $("#uname_error").show();
+            error_uname = true;
+        }
+    }
+    $("#register").click(function(e)
+    {
+        e.preventDefault();
+            error_fname = false;
+            error_lname = false;
+            error_uname = false;
+            error_pass = false;
+            error_cpass = false;
+            
+            check_fname();
+            check_lname();
+            check_uname();
+            check_pass();
+            check_cpass();
+            
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var username = $("#username").val();
+        var password = $("#password").val();
+        
+        if(error_fname==true||error_lname==true||error_uname==true||error_pass==true||error_cpass==true)
+        {
+            return false;
+        }
+        else
+        {
+            var data = 'firstname='+firstname+'&lastname='+lastname+'&username='+username+'&password='+password;
+             $.ajax
+            ({
+                url: 'main.php',
+                type: "POST",
+                data: data,
+                success: function(result)
+                {
+                    $("#log-msg").html(result);
+                    $("#log-msg").addClass('is-shown');
+                    $("#firstname").val('');$("#lastname").val('');
+                    $("#username").val('');$("#password").val('');$("#Confirm_password").val('');
+                }
+            });
+        }
+    });
+            
+    $("#logout").click(function() 
+    {
+        var data = "logout=true";
+        $.ajax
+        ({
+            url: 'main.php',
+            type: "POST",
+            data: data,
+            success: function(result)
+            {
+                $("#content").load('index.html');
+            }
+        });
+    });
+});
+</script>
