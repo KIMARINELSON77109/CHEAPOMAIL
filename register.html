@@ -111,16 +111,16 @@ $(document).ready(function()
     
     function check_pass()
     {
-        var pass_length = $("#password").val().length;
-        if(pass_length < 8)
+        var passreg = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/i);
+        if(passreg.test($("#password").val()))
         {
-            $("#pass_error").html("At least 8 characters");
-            $("#pass_error").show();
-            error_pass = true;
+            $("#pass_error").hide();
         }
         else
         {
-            $("#pass_error").hide();
+            $("#pass_error").html("Must have at least one number,one letter, one capital letter and at least 8 characters");
+            $("#pass_error").show();
+            error_pass = true;
         }
     }
     

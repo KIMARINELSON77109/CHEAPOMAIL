@@ -184,7 +184,7 @@ input[type="button"].btn-block {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 200px auto;
+    margin: 50px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

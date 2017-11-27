@@ -35,4 +35,4 @@ CREATE TABLE messages_read
 );
 
 INSERT INTO users (id, firstname, lastname, username, password_digest) VALUES
-  (1, "Kimari", "Nelson", "admin", "482c811da5d5b4bc6d497ffa98491e38");
+  (1, "admin", "admin", "admin", "482c811da5d5b4bc6d497ffa98491e38");
