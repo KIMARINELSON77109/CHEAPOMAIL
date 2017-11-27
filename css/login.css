@@ -130,7 +130,7 @@ input[type="search"] {
 }
 .btn-primary{
   color: #fff;
-  background-color: #337ab7;
+  background-color: #1d2731;
   border-color: #2e6da4;
 }
 input[type="submit"].btn-block,
@@ -142,6 +142,10 @@ input[type="button"].btn-block {
   position: relative;
   width: auto;
   margin: 10px;
+}
+.modal-header
+{
+  color: #1d2731;
 }
 .modal-content {
   position: relative;
@@ -278,6 +282,8 @@ body{
 .error{
     /*color:red*/
     color: #d91358;
+    font-family:"Helvetica Neue";
+    font-size: medium;
 }
 
 #content{

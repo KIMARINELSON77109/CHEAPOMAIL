@@ -111,7 +111,7 @@ $(document).ready(function()
     
     function check_pass()
     {
-        var passreg = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/i);
+        var passreg = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/);
         if(passreg.test($("#password").val()))
         {
             $("#pass_error").hide();
@@ -126,9 +126,9 @@ $(document).ready(function()
     
     function check_cpass()
     {
-        var pass_length = $("#password").val().length;
-        var cpass_length = $("#Confirm_password").val().length;
-        if(pass_length != cpass_length)
+        var pass_ = $("#password").val();
+        var cpass_ = $("#Confirm_password").val();
+        if(pass_ != cpass_)
         {
             $("#cpass_error").html("Passwords don't match");
             $("#cpass_error").show();
