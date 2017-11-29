@@ -195,7 +195,7 @@ input[type="button"].btn-block {
             box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
   }
 body{
-     background: url("http://www.learnex.in/wp-content/uploads/2015/12/1344899.jpg") no-repeat center center fixed;
+     background: url("../css/wallpaper.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -351,10 +351,12 @@ body{
 
 .unread{
     font-weight: bold;
+    color: white;
 }
 
 .read{
     font-weight: normal;
+    color: white;
 }
 
 .hide{

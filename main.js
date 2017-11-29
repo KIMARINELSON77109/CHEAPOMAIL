@@ -97,7 +97,7 @@ $(document).ready(function()
                     $(this).prev().slideToggle(400);
                     readMessage($(this).parent(), $(this).next().text());
                 });
-                setTimeout(getMessages,15000);
+                setTimeout(getMessages,30000);
             }
         })
     }

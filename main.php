@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     
                     if (in_array($mail["id"], $res2)){
                         echo '<div class="mail read">';
-                        echo '<p>(Read)</p>';
+                        echo '<p>------Message Read------</p>';
                     }
                     else
                     {
