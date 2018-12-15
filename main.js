@@ -23,7 +23,7 @@ $(document).ready(function()
                 data: data,
                 success: function(result)
                 {
-                    if(uname =="admin")
+                    if(uname =="admin" && result!="No User Found")
                     {
                         $("#navbar").show();
                         $("#content").load(result);
