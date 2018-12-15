@@ -1,9 +1,9 @@
 <?php
 
-    $servername = getenv('IP');
-    $username = 'C9_USER';
-    $password = "";
-    $database = "c9";
+    $servername ='us-cdbr-iron-east-01.cleardb.net';
+    $username = 'b6820daedec610';
+    $password = '341af09b';
+    $database = 'heroku_e2582eb78b0ce2a';
     $dbport = 3306;
 
 //###########################Create connection##################################
