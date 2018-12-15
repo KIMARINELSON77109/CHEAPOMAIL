@@ -6,5 +6,4 @@ function check_input($value)
   $value = htmlspecialchars($value);
   return $value;
 }
-
 ?>
